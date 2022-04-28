@@ -1,33 +1,28 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-
-    data1: {
-        name: "",
-        email:"",
-        password: "",
-    },
-
-    data2: {
-        name: "",
-        email:"",
-        password: "",
+    numbers: {
+        displayValue: 0
     }
 }
 
 const dataSlice = createSlice({
+
     name: "data",
     initialState,
+
     reducers: {
-        setData1: (state, action) => {
-            state.data1 = action.payload
+        increaseValue: (state, action) => {
+            state.numbers.displayValue ++
         },
-        setData2: (state, action) => {
-            state.data2 = action.payload
-        }
+
+        decreaseValue: (state, action) => {
+            state.numbers.displayValue --
+        },
     }
+
 })
 
-export const selectGeneral = (state) => state.data
-export const { setData } = dataSlice.actions
+export const selectNumbers = (state) => state.data.numbers
+export const { increaseValue, decreaseValue } = dataSlice.actions
 export default dataSlice.reducer
